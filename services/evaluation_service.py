@@ -1,4 +1,4 @@
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 import os
@@ -45,7 +45,7 @@ def evaluate_answers(questions_text: str, answer_key_text: str, student_answers_
     # Initialize the LLM
     # Assumes OPENAI_API_KEY is in the environment
     try:
-        llm = ChatOpenAI(model="gpt-4o", temperature=0)
+        llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
     except Exception as e:
         # Fallback to dummy data if API key is missing during initial testing
         print("Warning: LLM Initialization failed, returning dummy evaluation data.", str(e))
